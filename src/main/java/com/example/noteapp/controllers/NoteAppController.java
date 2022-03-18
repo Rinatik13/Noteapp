@@ -2,6 +2,7 @@ package com.example.noteapp.controllers;
 
 import com.example.noteapp.logic.FileReaderNote;
 import com.example.noteapp.logic.FileWriterNote;
+import com.example.noteapp.logic.GetAdressAndNameAndFormat;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,14 +47,8 @@ public class NoteAppController {
 
     opennote.setOnAction(event -> {
         System.out.println("Open Note file");
-        FileReaderNote fileReaderNote = new FileReaderNote();
-        try {
-            String text = fileReaderNote.fileReaderNote("C:\\java\\test.txt");
-            System.out.println(text);
-            textnote.setText(text);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        GetAdressAndNameAndFormat getAdressAndNameAndFormat = new GetAdressAndNameAndFormat();
+
     });
     savenote.setOnAction(event -> {
         System.out.println("Save Note file");
