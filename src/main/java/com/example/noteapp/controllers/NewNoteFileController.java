@@ -1,4 +1,4 @@
-package com.example.noteapp;
+package com.example.noteapp.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -40,6 +40,7 @@ public class NewNoteFileController {
     @FXML
     void initialize() {
 
-    }
+
+            }
 
 }

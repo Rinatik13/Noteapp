@@ -8,4 +8,6 @@ module com.example.noteapp {
 
     opens com.example.noteapp to javafx.fxml;
     exports com.example.noteapp;
+    exports com.example.noteapp.controllers;
+    opens com.example.noteapp.controllers to javafx.fxml;
 }

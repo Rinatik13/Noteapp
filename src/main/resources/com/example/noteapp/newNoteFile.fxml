@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="228.0" prefWidth="317.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noteapp.NewNoteFileController">
+<AnchorPane prefHeight="228.0" prefWidth="317.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noteapp.controllers.NewNoteFileController">
    <children>
       <Button fx:id="buttonadresswennote" layoutX="241.0" layoutY="52.0" mnemonicParsing="false" text="Adress" />
       <Button fx:id="buttonnamenewnote" layoutX="245.0" layoutY="105.0" mnemonicParsing="false" text="Name" />
