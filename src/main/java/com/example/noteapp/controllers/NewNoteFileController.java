@@ -43,7 +43,7 @@ public class NewNoteFileController {
         buttonadresswennote.setOnAction(event -> {
             OpenAdressMenu openAdressMenu = new OpenAdressMenu();
             String adress = openAdressMenu.openAdressMenu();
-            System.out.println(adress);
+            adressnewnote.setText(adress);
         });
 
     }

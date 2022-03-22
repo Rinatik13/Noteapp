@@ -4,11 +4,13 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+import java.io.File;
+
 public class OpenAdressMenu {
     public String openAdressMenu(){
         FileChooser fileChooser = new FileChooser();
         Window window = new Stage();
-        fileChooser.showOpenDialog(window);
-        return fileChooser.getInitialFileName().toString();
+        File file = new File(fileChooser.showSaveDialog(window).getAbsoluteFile().toURI());
+        return file.toString();
     }
 }
