@@ -1,12 +1,16 @@
 package com.example.noteapp.controllers;
 
+import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import com.example.noteapp.logic.OpenAdressMenu;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-
-import java.net.URL;
-import java.util.ResourceBundle;
+import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 
 public class NewNoteFileController {
 
@@ -26,21 +30,22 @@ public class NewNoteFileController {
     private Button buttonadresswennote;
 
     @FXML
-    private Button buttonnamenewnote;
-
-    @FXML
     private Button closenewnote;
 
     @FXML
     private ChoiceBox<?> formatnewnote;
 
     @FXML
-    private Label namenewnote;
+    private TextField newnotefilename;
 
     @FXML
     void initialize() {
+        buttonadresswennote.setOnAction(event -> {
+            OpenAdressMenu openAdressMenu = new OpenAdressMenu();
+            String adress = openAdressMenu.openAdressMenu();
+            System.out.println(adress);
+        });
 
-
-            }
+    }
 
 }
