@@ -44,6 +44,7 @@ public class NewNoteFileController {
             OpenAdressMenu openAdressMenu = new OpenAdressMenu();
             String adress = openAdressMenu.openAdressMenu();
             adressnewnote.setText(adress);
+            System.out.println(adress);
         });
 
     }
