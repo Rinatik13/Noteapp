@@ -42,7 +42,7 @@ public class GetAdressAndNameAndFormat {
 
     public String getNoteFileAdress(){
         String result = "";
-        result=adress+name+format;
+        result=adress+"\\"+name+format;
         return result;
     }
 }

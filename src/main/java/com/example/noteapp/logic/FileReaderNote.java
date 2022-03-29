@@ -14,7 +14,6 @@ public class FileReaderNote {
         FileReader fileReader = null;
         try {
             fileReader = new FileReader(adress);
-            char charText;
             int fileText;
 
             while ((fileText=fileReader.read())!=-1){
@@ -25,9 +24,7 @@ public class FileReaderNote {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        finally {
-            fileReader.close();
-        }
+
         return result;
     }
 }

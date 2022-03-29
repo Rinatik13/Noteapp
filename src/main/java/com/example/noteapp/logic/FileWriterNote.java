@@ -6,7 +6,7 @@ import java.io.IOException;
 // Получем два значения, Адрес файла с именем и форматом, и сам текст.
 // В данном классе создаётся файл по указанному адресу и заполняется текстом.
 public class FileWriterNote {
-    public void fileWriterNote(String adress, String text){
+    public String fileWriterNote(String adress, String text){
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(adress);
@@ -22,5 +22,6 @@ public class FileWriterNote {
                 e.printStackTrace();
             }
         }
+        return adress;
     }
 }

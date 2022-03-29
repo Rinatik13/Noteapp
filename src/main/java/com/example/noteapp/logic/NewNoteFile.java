@@ -4,14 +4,9 @@ import java.io.IOException;
 
 public class NewNoteFile {
     public String newNoteFile(GetAdressAndNameAndFormat getAdressAndNameAndFormat) {
-        FileReaderNote fileReaderNote = new FileReaderNote();
+        FileWriterNote fileWriterNote = new FileWriterNote();
         String text = "";
-        try {
-            text = fileReaderNote.fileReaderNote(getAdressAndNameAndFormat.getNoteFileAdress());
-        } catch (
-                IOException e) {
-            e.printStackTrace();
-        }
+        text = fileWriterNote.fileWriterNote(getAdressAndNameAndFormat.getNoteFileAdress(),"");
         return text;
     }
 }
