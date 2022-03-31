@@ -4,7 +4,6 @@ package com.example.noteapp.controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.example.noteapp.NoteAppApplication;
 import com.example.noteapp.logic.GetAdressAndNameAndFormat;
 import com.example.noteapp.logic.NewNoteFile;
@@ -17,6 +16,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
 
 
 public class NewNoteFileController {
@@ -55,6 +55,7 @@ public class NewNoteFileController {
         });
 
         addnewnote.setOnAction(event -> {
+            addnewnote.getScene().getWindow().hide();
            NewNoteFile newNoteFile = new NewNoteFile();
            GetAdressAndNameAndFormat getAdressAndNameAndFormat =
                    new GetAdressAndNameAndFormat(
@@ -73,8 +74,8 @@ public class NewNoteFileController {
             stage.setTitle("Note");
             stage.setScene(scene);
             stage.show();
-
         });
+        addnewnote.cancelButtonProperty();
 
     }
 
