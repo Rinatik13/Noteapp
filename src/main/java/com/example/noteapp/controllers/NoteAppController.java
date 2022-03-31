@@ -1,17 +1,14 @@
 package com.example.noteapp.controllers;
 
 import com.example.noteapp.NoteAppApplication;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -45,6 +42,11 @@ public class NoteAppController {
 
     @FXML
     void initialize() {
+
+        // открываем окно выбора директории для нового файла, ввода названия файла
+        // и выбора формата файла (по умолчанию txt)
+        // не реализовано закрытие начального окна после создания нового файла
+        // приходится закрывать вручную
     newnote.setOnAction(event -> {
         Stage stage = new Stage();
         System.out.println("Open new Note file");
@@ -61,10 +63,27 @@ public class NoteAppController {
 
     });
 
+    // реализуем функцию открытия файла
+    // открываем новое окно где выбираем файл
+    // далее сохранённый адрес файла используется для чтения файл
+    // и необходимой информации о нём
     opennote.setOnAction(event -> {
         System.out.println("Open Note file");
 
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(NoteAppApplication.class.getResource("OpenNoteFile.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(fxmlLoader.load(), 317, 228);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setTitle("Open note file");
+        stage.setScene(scene);
+        stage.show();
     });
+
+
     savenote.setOnAction(event -> {
         System.out.println("Save Note file");
 

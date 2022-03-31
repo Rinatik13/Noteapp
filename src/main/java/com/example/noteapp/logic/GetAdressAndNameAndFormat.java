@@ -6,8 +6,13 @@ public class GetAdressAndNameAndFormat {
     String adress;
     String name;
     String format;
+    String fullAdress;
 
     public GetAdressAndNameAndFormat() {
+    }
+
+    public GetAdressAndNameAndFormat(String fullAdress){
+        this.fullAdress = fullAdress;
     }
 
     public GetAdressAndNameAndFormat(String adress, String name, String format) {
@@ -45,4 +50,9 @@ public class GetAdressAndNameAndFormat {
         result=adress+"\\"+name+format;
         return result;
     }
+
+    public String getFullAdress(){
+        return fullAdress;
+    }
+
 }

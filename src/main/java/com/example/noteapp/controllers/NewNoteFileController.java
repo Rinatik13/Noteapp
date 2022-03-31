@@ -8,13 +8,12 @@ import com.example.noteapp.NoteAppApplication;
 import com.example.noteapp.logic.GetAdressAndNameAndFormat;
 import com.example.noteapp.logic.NewNoteFile;
 import com.example.noteapp.logic.OpenAdressMenu;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 
@@ -40,13 +39,19 @@ public class NewNoteFileController {
     private Button closenewnote;
 
     @FXML
-    private ChoiceBox<?> formatnewnote;
+    private ChoiceBox<String> formatnewnote;
 
     @FXML
     private TextField newnotefilename;
 
+
+    ObservableList<String> observableList = FXCollections.observableArrayList(".txt");
+
+    // реализуем события при нажатии кнопок
     @FXML
     void initialize() {
+
+        // выводит при нажатии окно где выбираем папку где будет хранится новый файл
         buttonadresswennote.setOnAction(event -> {
             OpenAdressMenu openAdressMenu = new OpenAdressMenu();
             String adress = openAdressMenu.openAdressMenu();
@@ -54,6 +59,13 @@ public class NewNoteFileController {
             System.out.println(adress);
         });
 
+        // должен выходить список доступных форматов документа.
+        formatnewnote.setItems(observableList);
+
+
+        // финальная кнопка
+        // при нажатии собирает необходимую информацию.
+        // адрес, название и выбранный формат файла (по умолчанию txt)
         addnewnote.setOnAction(event -> {
             addnewnote.getScene().getWindow().hide();
            NewNoteFile newNoteFile = new NewNoteFile();
@@ -61,7 +73,7 @@ public class NewNoteFileController {
                    new GetAdressAndNameAndFormat(
                             adressnewnote.getText(),
                             newnotefilename.getText(),
-                            ".txt");
+                            formatnewnote.getValue());
            newNoteFile.newNoteFile(getAdressAndNameAndFormat);
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(NoteAppApplication.class.getResource("Noteapp.fxml"));
@@ -71,11 +83,18 @@ public class NewNoteFileController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            stage.setTitle("Note");
+            stage.setTitle(newnotefilename.getText());
             stage.setScene(scene);
             stage.show();
+            System.out.println("Add new note file.");
         });
-        addnewnote.cancelButtonProperty();
+
+
+        // кнопка выхода с текушего окна и возврат к предыдушему
+        closenewnote.setOnAction(event ->{
+            closenewnote.getScene().getWindow().hide();
+            System.out.println("Close add new note.");
+        });
 
     }
 
