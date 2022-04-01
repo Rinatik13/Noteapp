@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import com.example.noteapp.NoteAppApplication;
 import com.example.noteapp.logic.FileReaderNote;
+import com.example.noteapp.noteobject.Notefile;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -51,6 +52,8 @@ public class OpenNoteFileController {
 
             // реализуем открытие файла и загрузку данных в
             // программу
+            // необходимо реализовать механизм передачи информации с файла в новое
+            // открывшиеся окно
             opennotefile.setOnAction(event->{
                 opennotefile.getScene().getWindow().hide();
                 FileReaderNote fileReaderNote = new FileReaderNote();
@@ -67,6 +70,8 @@ public class OpenNoteFileController {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                Notefile notefile = new Notefile();
+                notefile.setText();
                 stage.setTitle("test");
                 stage.setScene(scene);
                 stage.show();

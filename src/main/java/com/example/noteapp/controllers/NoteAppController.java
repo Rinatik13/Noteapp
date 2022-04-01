@@ -1,6 +1,7 @@
 package com.example.noteapp.controllers;
 
 import com.example.noteapp.NoteAppApplication;
+import com.example.noteapp.noteobject.Notefile;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,6 +16,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class NoteAppController {
+
+    Notefile notefile = new Notefile();
 
     @FXML
     private ResourceBundle resources;
@@ -96,8 +99,9 @@ public class NoteAppController {
         System.out.println("Close Note App");
 
     });
-
-
+    if (notefile.getText()!=null)
+        System.out.println("Прошло проверку что текст есть");
+    textnote.setText(notefile.getText());
     }
 
 }

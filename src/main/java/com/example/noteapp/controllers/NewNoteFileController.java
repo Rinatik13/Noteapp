@@ -45,7 +45,8 @@ public class NewNoteFileController {
     private TextField newnotefilename;
 
 
-    ObservableList<String> observableList = FXCollections.observableArrayList(".txt");
+    ObservableList<String> observableList = FXCollections
+            .observableArrayList(".txt");
 
     // реализуем события при нажатии кнопок
     @FXML
@@ -66,14 +67,20 @@ public class NewNoteFileController {
         // финальная кнопка
         // при нажатии собирает необходимую информацию.
         // адрес, название и выбранный формат файла (по умолчанию txt)
+        // выходит ошибка при закрытии окна выбора директории. разбиратся или нет?))
+        // на работу вроде кретически не влияет
         addnewnote.setOnAction(event -> {
             addnewnote.getScene().getWindow().hide();
            NewNoteFile newNoteFile = new NewNoteFile();
+           String format = ".txt";
+           if (formatnewnote.getValue()!=null){
+               format = formatnewnote.getValue();
+           }
            GetAdressAndNameAndFormat getAdressAndNameAndFormat =
                    new GetAdressAndNameAndFormat(
                             adressnewnote.getText(),
                             newnotefilename.getText(),
-                            formatnewnote.getValue());
+                            format);
            newNoteFile.newNoteFile(getAdressAndNameAndFormat);
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(NoteAppApplication.class.getResource("Noteapp.fxml"));
