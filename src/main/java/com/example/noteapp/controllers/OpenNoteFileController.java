@@ -70,8 +70,12 @@ public class OpenNoteFileController {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Notefile notefile = new Notefile();
-                notefile.setText();
+                NoteAppController noteAppController = fxmlLoader.getController();
+                try {
+                    noteAppController.myFunction(fileReaderNote.fileReaderNote(adressopennotefile.getText()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 stage.setTitle("test");
                 stage.setScene(scene);
                 stage.show();

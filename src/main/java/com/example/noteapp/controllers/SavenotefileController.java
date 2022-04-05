@@ -1,9 +1,5 @@
 package com.example.noteapp.controllers;
 
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import com.example.noteapp.NoteAppApplication;
 import com.example.noteapp.logic.GetAdressAndNameAndFormat;
 import com.example.noteapp.logic.NewNoteFile;
@@ -13,12 +9,18 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-
-public class NewNoteFileController {
+public class SavenotefileController {
+    String text = "";
 
     @FXML
     private ResourceBundle resources;
@@ -71,17 +73,17 @@ public class NewNoteFileController {
         // на работу вроде кретически не влияет
         addnewnote.setOnAction(event -> {
             addnewnote.getScene().getWindow().hide();
-           NewNoteFile newNoteFile = new NewNoteFile();
-           String format = ".txt";
-           if (formatnewnote.getValue()!=null){
-               format = formatnewnote.getValue();
-           }
-           GetAdressAndNameAndFormat getAdressAndNameAndFormat =
-                   new GetAdressAndNameAndFormat(
+            NewNoteFile newNoteFile = new NewNoteFile();
+            String format = ".txt";
+            if (formatnewnote.getValue()!=null){
+                format = formatnewnote.getValue();
+            }
+            GetAdressAndNameAndFormat getAdressAndNameAndFormat =
+                    new GetAdressAndNameAndFormat(
                             adressnewnote.getText(),
                             newnotefilename.getText(),
                             format);
-           newNoteFile.newNoteFile(getAdressAndNameAndFormat);
+            newNoteFile.saveNoteFile(getAdressAndNameAndFormat,text);
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(NoteAppApplication.class.getResource("Noteapp.fxml"));
             Scene scene = null;
@@ -90,10 +92,6 @@ public class NewNoteFileController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            NoteAppController noteAppController = fxmlLoader.getController();
-            noteAppController.notefile.setAdress(adressnewnote.getText());
-            noteAppController.notefile.setName(newnotefilename.getText());
-            noteAppController.notefile.setFormat(format);
             stage.setTitle(newnotefilename.getText());
             stage.setScene(scene);
             stage.show();
@@ -108,5 +106,10 @@ public class NewNoteFileController {
         });
 
     }
+    public SavenotefileController (String text){
+        this.text = text;
+    }
 
+    public SavenotefileController() {
+    }
 }
